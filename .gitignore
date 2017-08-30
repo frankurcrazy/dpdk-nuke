@@ -53,3 +53,4 @@ dkms.conf
 
 # Ignore build directory
 build
+x86_64-native-linuxapp-gcc
