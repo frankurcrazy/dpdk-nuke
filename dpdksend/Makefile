@@ -44,13 +44,16 @@ APP = dpdksend
 # all source are stored in SRCS-y
 SRCS-y := main.c
 
-CFLAGS += -O3 -fno-stack-protector -g -pg
-#CFLAGS += $(WERROR_FLAGS)
+CFLAGS += -I${RTE_SRCDIR}/includes -O3 -fno-stack-protector -g
 
 include $(RTE_SDK)/mk/rte.extapp.mk
 
-.PHONY: start debug
+.PHONY: start debug flags
 start:
 	sudo -E build/dpdksend -c 0xf --no-huge --log-level=8 --
+start-pcap:
+	sudo -E build/dpdksend -c 0xf --no-huge --log-level=8 --vdev 'eth_pcap0,iface=eth0'
 debug:
 	sudo -E gdb build/dpdksend
+flags:
+	@echo ${CFLAGS}

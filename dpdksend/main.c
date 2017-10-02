@@ -1,12 +1,20 @@
+/**
+  DPDK Nuke is a very simple packet generator
+  that can generate line-rate CBR traffic with 
+  various packet sizes
+**/
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <rte_eal.h>
 #include <rte_common.h>
 #include <rte_log.h>
+#include <rte_pci.h>
 
-#define RTE_LOGTYPE_DPDKSEND RTE_LOGTYPE_USER1
+#include "dpdksend.h"
 
+/* Global variables */
+static dpdksend_ctx_t ctx;
 
 int main(int argc, char** argv)
 {
@@ -19,7 +27,7 @@ int main(int argc, char** argv)
     }
     argc -= ret;
 
-
+    dpdksend_ctx_init(ctx, argv);
 
     return 0;
 }
