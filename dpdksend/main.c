@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     }
     argc -= ret;
 
-    dpdksend_ctx_init(ctx, argv);
+    dpdksend_ctx_init(&ctx, argv);
 
     return 0;
 }

@@ -41,3 +41,7 @@ include $(RTE_SDK)/mk/rte.vars.mk
 DIRS-y:= dpdksend 
 
 include $(RTE_SDK)/mk/rte.extsubdir.mk
+
+.PHONY: ctags
+ctags:
+	ctags -R --languages=c --tag-relative=no .
